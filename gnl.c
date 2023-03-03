@@ -1,43 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   gnl.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: niceguy <niceguy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/02 18:06:28 by evallee-          #+#    #+#             */
-/*   Updated: 2023/03/03 04:14:16 by niceguy          ###   ########.fr       */
+/*   Created: 2023/03/03 00:01:43 by niceguy           #+#    #+#             */
+/*   Updated: 2023/03/03 05:15:16 by niceguy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
 #include "get_next_line.h"
 
-char	*ft_strchr(const char *s, int c)
+int	main(int argc, char **argv)
 {
-	if (!s)
-		return (NULL);
-	while (*s != (unsigned char)c)
-	{
-		if (!*s++)
-			return (NULL);
-	}
-	return ((char *)s);
-}
+	int		fd;
+	int		ln;
 
-void	ft_lstclear(t_list **lst, void (*del)(void*))
-{
-	t_list	*temp;
-	t_list	*next;
-
-	if (!*lst || !del)
-		return ;
-	temp = *lst;
-	while (temp)
+	ln = 0;
+	if (argc == 2)
 	{
-		next = temp->next;
-		del(temp->content);
-		free(temp);
-		temp = next;
+		fd = open(argv[1], O_RDONLY);
+		if (fd > -1)
+		{
+			printf("line(%d) : %s", ln++, get_next_line(fd));
+			printf("line(%d) : %s", ln++, get_next_line(fd));
+			printf("line(%d) : %s", ln++, get_next_line(fd));
+			//printf("line(%d) : %s", ln++, get_next_line(fd));
+			//printf("line(%d) : %s", ln++, get_next_line(fd));
+		}
 	}
-	*lst = NULL;
+	return (0);
 }
