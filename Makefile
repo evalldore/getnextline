@@ -9,7 +9,7 @@ RM		= rm -f
 all : $(NAME)
 
 $(NAME) : $(NAME).c $(BINDIR) $(OBJS)
-	$(CC) $(CFLAGS) -g -D BUFFER_SIZE=2 -o $(NAME) $(NAME).c $(OBJS)
+	$(CC) $(CFLAGS) -g -D BUFFER_SIZE=2000 -o $(NAME) $(NAME).c $(OBJS)
 
 $(BINDIR)%.o : %.c
 	$(CC) -g -c $(CFLAGS) -o $@ $^ 

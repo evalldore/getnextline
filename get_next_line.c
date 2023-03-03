@@ -6,7 +6,7 @@
 /*   By: niceguy <niceguy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 17:54:45 by evallee-          #+#    #+#             */
-/*   Updated: 2023/03/03 05:16:35 by niceguy          ###   ########.fr       */
+/*   Updated: 2023/03/03 06:20:48 by niceguy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,8 @@ static void	read_line(t_list **lst, int fd)
 {
 	t_list	*temp;
 	t_list	*new;
-	char	*buff;
+	char	buff[BUFFER_SIZE];
 
-	buff = malloc(sizeof(char) * BUFFER_SIZE);
 	while (read(fd, buff, BUFFER_SIZE))
 	{
 		new = malloc(sizeof(t_list));
@@ -52,7 +51,6 @@ static void	read_line(t_list **lst, int fd)
 		if (ft_strchr(buff, '\n'))
 			break ;
 	}
-	free(buff);
 }
 
 static size_t	list_len(t_list *lst)
