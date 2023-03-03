@@ -1,0 +1,6 @@
+.vscode
+.DS_Store
+Makefile
+gnl*
+poopy
+bin/
