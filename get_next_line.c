@@ -6,97 +6,60 @@
 /*   By: niceguy <niceguy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 17:54:45 by evallee-          #+#    #+#             */
-/*   Updated: 2023/03/03 06:20:48 by niceguy          ###   ########.fr       */
+/*   Updated: 2023/03/04 05:23:48 by niceguy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include<stdio.h>
 #include "get_next_line.h"
 
-static char	*cpy_buff(const char *buff)
+static void	read_file(t_fdstate *fdstate, int fd)
 {
-	char			*dest;
-	unsigned int	i;
+	char	chunk[BUFFER_SIZE + 1];
+	char	*new;
 
-	i = 0;
-	dest = malloc(sizeof(char) * BUFFER_SIZE);
-	while (i < BUFFER_SIZE)
+	chunk[BUFFER_SIZE] = '\0';
+	while (read(fd, chunk, BUFFER_SIZE) > 0)
 	{
-		dest[i] = buff[i];
-		i++;
-	}
-	return (dest);
-}
-
-static void	read_line(t_list **lst, int fd)
-{
-	t_list	*temp;
-	t_list	*new;
-	char	buff[BUFFER_SIZE];
-
-	while (read(fd, buff, BUFFER_SIZE))
-	{
-		new = malloc(sizeof(t_list));
-		new->content = cpy_buff(buff);
-		new->next = NULL;
-		if (!*lst)
-			*lst = new;
-		else
-		{
-			if (!temp)
-				temp = *lst;
-			temp->next = new;
-		}
-		temp = new;
-		if (ft_strchr(buff, '\n'))
+		new = ft_strjoin(fdstate->buff, chunk);
+		free(fdstate->buff);
+		fdstate->buff = new;
+		if (ft_strchr(chunk, '\n'))
 			break ;
 	}
 }
 
-static size_t	list_len(t_list *lst)
+t_fdstate	*new_state(int fd)
 {
-	size_t	len;
-	char	*buff;
+	t_fdstate	*fdstate;
 
-	len = 0;
-	while (lst)
-	{
-		buff = lst->content;
-		while (*buff++)
-			len++;
-		lst = lst->next;
-	}
-	return (len);
-}
-
-static char	*make_line(t_list **lst)
-{
-	size_t	i;
-	t_list	*temp;
-	char	*buff;
-	char	*line;
-
-	line = malloc(sizeof(char) * list_len(*lst));
-	temp = *lst;
-	i = 0;
-	while (temp)
-	{
-		buff = temp->content;
-		while (*buff)
-		{
-			line[i] = *buff++;
-			i++;
-		}
-		temp = temp->next;
-	}
-	*lst = temp;
-	return (line);
+	fdstate = malloc(sizeof(t_fdstate));
+	fdstate->fd = fd;
+	fdstate->buff = malloc(sizeof(char));
+	fdstate->buff[0] = '\0';
+	fdstate->buff_pos = 0;
+	return (fdstate);
 }
 
 char	*get_next_line(int fd)
 {
-	static t_list	*lst;
+	static t_fdstate	*fdstate;
+	char				*target;
+	char				*end;
 
-	read_line(&lst, fd);
-	return (make_line(&lst));
+	if (!fdstate)
+		fdstate = new_state(fd);
+	read_file(fdstate, fd);
+	target = &fdstate->buff[fdstate->buff_pos];
+	end = ft_strchr(target, '\n');
+	if (!end)
+		end = ft_strchr(target, '\0');
+	else
+		end++;
+	if (fdstate->line)
+		free(fdstate->line);
+	fdstate->line = malloc(end - target);
+	ft_strlcpy(fdstate->line, target, (end - target) + 1);
+	fdstate->buff_pos += (end - target);
+	return (fdstate->line);
 }
