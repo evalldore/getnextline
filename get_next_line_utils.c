@@ -6,12 +6,11 @@
 /*   By: niceguy <niceguy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 18:06:28 by evallee-          #+#    #+#             */
-/*   Updated: 2023/03/04 04:28:44 by niceguy          ###   ########.fr       */
+/*   Updated: 2023/03/04 19:15:39 by niceguy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
 
 size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {

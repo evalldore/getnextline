@@ -6,7 +6,7 @@
 /*   By: niceguy <niceguy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 17:54:45 by evallee-          #+#    #+#             */
-/*   Updated: 2023/03/04 05:23:48 by niceguy          ###   ########.fr       */
+/*   Updated: 2023/03/04 19:36:14 by niceguy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,11 @@ static void	read_file(t_fdstate *fdstate, int fd)
 {
 	char	chunk[BUFFER_SIZE + 1];
 	char	*new;
+	size_t	i;
 
-	chunk[BUFFER_SIZE] = '\0';
+	i = 0;
+	while (i < (BUFFER_SIZE + 1))
+		chunk[i++] = '\0';
 	while (read(fd, chunk, BUFFER_SIZE) > 0)
 	{
 		new = ft_strjoin(fdstate->buff, chunk);
