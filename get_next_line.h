@@ -6,7 +6,7 @@
 /*   By: niceguy <niceguy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 17:55:11 by evallee-          #+#    #+#             */
-/*   Updated: 2023/03/04 04:34:47 by niceguy          ###   ########.fr       */
+/*   Updated: 2023/03/05 19:39:25 by niceguy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,8 @@
 typedef struct s_fdstate
 {
 	char			*buff;
-	char			*line;
 	int				fd;
-	size_t			rbytes;
+	size_t			bytes;
 	size_t			buff_pos;
 }	t_fdstate;
 
