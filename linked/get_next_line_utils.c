@@ -6,7 +6,7 @@
 /*   By: niceguy <niceguy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 18:06:28 by evallee-          #+#    #+#             */
-/*   Updated: 2023/03/07 23:54:14 by niceguy          ###   ########.fr       */
+/*   Updated: 2023/03/09 01:23:03 by niceguy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,4 +92,25 @@ char	*ft_strchr(const char *s, int c)
 			return (NULL);
 	}
 	return ((char *)s);
+}
+
+ssize_t	ft_lstlen(t_list	*list)
+{
+	char	*end;
+	ssize_t	len;
+
+	if (!list)
+		return (0);
+	len = 0;
+	while (list)
+	{
+		end = ft_strchr(list->content, '\n');
+		if (!end)
+			end = ft_strchr(list->content, '\0');
+		else
+			end++;
+		len += (end - list->content);
+		list = list->next;
+	}
+	return (len);
 }
