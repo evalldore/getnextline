@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: evallee- <evallee-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 17:54:45 by evallee-          #+#    #+#             */
-/*   Updated: 2023/03/09 20:59:02 by evallee-         ###   ########.fr       */
+/*   Updated: 2023/03/09 21:24:39 by evallee-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include<stdio.h>
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 static char	*make_chunk(void)
 {
@@ -101,13 +101,18 @@ char	*make_line(t_fdstate *fdstate)
 
 char	*get_next_line(int fd)
 {
-	static t_fdstate	*fdstate;
+	static t_fdstate	*states[MAX_OPEN];
+	t_fdstate			*fdstate;
 	char				*line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
+	fdstate = states[fd];
 	if (!fdstate)
+	{
 		fdstate = new_state(fd);
+		states[fd] = fdstate;
+	}	
 	if (fdstate)
 	{
 		if (read_file(fdstate) >= 0)

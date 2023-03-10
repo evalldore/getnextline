@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   gnl.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: niceguy <niceguy@student.42.fr>            +#+  +:+       +#+        */
+/*   By: evallee- <evallee-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 00:01:43 by niceguy           #+#    #+#             */
-/*   Updated: 2023/03/09 03:44:40 by niceguy          ###   ########.fr       */
+/*   Updated: 2023/03/09 17:11:31 by evallee-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,12 @@ int	main(int argc, char **argv)
 		{
 			printf("file descriptor: %d\n", fd);
 			printf("%s", get_next_line(fd));
-			//printf("%s", get_next_line(fd));
+			printf("%s", get_next_line(fd));
+			printf("%s", get_next_line(fd));
+			printf("%s", get_next_line(fd));
+			printf("%s", get_next_line(fd));
+			/*printf("%s", get_next_line(fd));
+			printf("%s", get_next_line(fd));*/
 		}
 	}
 }
