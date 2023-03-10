@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   gnl.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: evallee- <evallee-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: niceguy <niceguy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 00:01:43 by niceguy           #+#    #+#             */
-/*   Updated: 2023/03/09 21:22:35 by evallee-         ###   ########.fr       */
+/*   Updated: 2023/03/09 23:28:09 by niceguy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,24 +15,23 @@
 
 int	main(int argc, char **argv)
 {
-	int		fd;
+	int		fd1;
+	int		fd2;
 
 	printf("BUFFER_SIZE: %d\n", BUFFER_SIZE);
 	if (argc == 3)
 	{
-		fd = open(argv[1], O_RDONLY);
-		if (fd > -1)
-		{
-			printf("file descriptor: %d\n", fd);
-			printf("%s", get_next_line(fd));
-			printf("%s", get_next_line(fd));
-		}
-		fd = open(argv[2], O_RDONLY);
-		if (fd > -1)
-		{
-			printf("file descriptor: %d\n", fd);
-			printf("%s", get_next_line(fd));
-			printf("%s", get_next_line(fd));
-		}
+		fd1 = open(argv[1], O_RDONLY);
+		fd2 = open(argv[2], O_RDONLY);
+		printf("%s", get_next_line(fd1));
+		printf("%s", get_next_line(fd2));
+		printf("%s", get_next_line(fd1));
+		printf("%s", get_next_line(fd2));
+		printf("%s", get_next_line(fd1));
+		printf("%s", get_next_line(fd2));
+		printf("%s", get_next_line(fd1));
+		printf("%s", get_next_line(fd2));
+		printf("%s", get_next_line(fd1));
+		printf("%s", get_next_line(fd2));
 	}
 }

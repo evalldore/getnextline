@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: evallee- <evallee-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: niceguy <niceguy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 17:54:45 by evallee-          #+#    #+#             */
-/*   Updated: 2023/03/09 21:24:39 by evallee-         ###   ########.fr       */
+/*   Updated: 2023/03/09 23:28:57 by niceguy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,7 +123,7 @@ char	*get_next_line(int fd)
 		}
 		free(fdstate->buff);
 		free(fdstate);
-		fdstate = NULL;
+		states[fd] = NULL;
 	}
 	return (NULL);
 }
