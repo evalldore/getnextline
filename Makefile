@@ -14,8 +14,8 @@ all : $(NAME)
 $(NAME) : $(NAME).c $(BINDIR) $(OBJS)
 	$(CC) $(CFLAGS) -o $(NAME) $(NAME).c $(OBJS)
 
-$(BONUS) : $(NAME).c $(BINDIR) $(BOBJS)
-	$(CC) $(CFLAGS) -o $(BONUS) $(NAME).c $(BOBJS)
+$(BONUS) : $(BONUS).c $(BINDIR) $(BOBJS)
+	$(CC) $(CFLAGS) -o $(BONUS) $(BONUS).c $(BOBJS)
 
 $(BINDIR)%.o : %.c
 	$(CC) -c $(CFLAGS) -o $@ $^ 
