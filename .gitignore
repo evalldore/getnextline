@@ -3,5 +3,5 @@
 .gitignore
 //Makefile
 bin/
-lines
 gnl
+gnl_bonus
