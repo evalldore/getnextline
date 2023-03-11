@@ -1,7 +1,7 @@
 .vscode
 .DS_Store
-//Makefile
+.gitignore
+Makefile
 bin/
-back
-//linked/
+lines*
 gnl*

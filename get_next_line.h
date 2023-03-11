@@ -6,7 +6,7 @@
 /*   By: niceguy <niceguy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 17:55:11 by evallee-          #+#    #+#             */
-/*   Updated: 2023/03/07 23:54:17 by niceguy          ###   ########.fr       */
+/*   Updated: 2023/03/11 02:38:07 by niceguy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,17 @@
 
 typedef struct s_fdstate
 {
-	char			*buff;
+	char			buff[BUFFER_SIZE + 1];
+	char			*stash;
 	int				fd;
-	size_t			buff_pos;
+	size_t			pos;
 }	t_fdstate;
 
 char	*get_next_line(int fd);
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
 size_t	ft_strlen(const char *str);
 size_t	ft_strlcat(char *dst, const char *src, size_t size);
-char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strchr(const char *s, int c);
+void	*ft_emptyline(size_t count);
 
 #endif

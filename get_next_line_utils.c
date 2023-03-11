@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: evallee- <evallee-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: niceguy <niceguy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 18:06:28 by evallee-          #+#    #+#             */
-/*   Updated: 2023/03/09 20:59:55 by evallee-         ###   ########.fr       */
+/*   Updated: 2023/03/11 04:11:09 by niceguy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,22 +66,6 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 	return (ft_strlen(src));
 }
 
-char	*ft_strjoin(char const *s1, char const *s2)
-{
-	char	*buff;
-	size_t	buffl;
-
-	if (!s1 || !s2)
-		return (NULL);
-	buffl = ft_strlen(s1) + ft_strlen(s2) + 1;
-	buff = malloc(buffl);
-	if (!buff)
-		return (NULL);
-	ft_strlcpy(buff, s1, buffl);
-	ft_strlcat(buff, s2, buffl);
-	return (buff);
-}
-
 char	*ft_strchr(const char *s, int c)
 {
 	if (!s)
@@ -92,4 +76,18 @@ char	*ft_strchr(const char *s, int c)
 			return (NULL);
 	}
 	return ((char *)s);
+}
+
+void	*ft_emptyline(size_t count)
+{
+	size_t	i;
+	char	*str;
+
+	i = 0;
+	str = malloc(sizeof(char) * count);
+	if (!str)
+		return (NULL);
+	while (i < count)
+		str[i++] = '\0';
+	return (str);
 }
