@@ -6,7 +6,7 @@ SRCS	= get_next_line.c get_next_line_utils.c
 OBJS	= $(addprefix $(BINDIR), $(SRCS:.c=.o))
 BOBJS	= $(addprefix $(BINDIR), $(BSRCS:.c=.o))
 CC		= gcc
-CFLAGS	= -Wall -Wextra -Werror -g -D BUFFER_SIZE=5
+CFLAGS	= -Wall -Wextra -Werror -g -D BUFFER_SIZE=42
 RM		= rm -f
 
 all : $(NAME)
