@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_bonus.h                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: niceguy <niceguy@student.42.fr>            +#+  +:+       +#+        */
+/*   By: evallee- <evallee-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 17:55:11 by evallee-          #+#    #+#             */
-/*   Updated: 2023/03/11 04:21:47 by niceguy          ###   ########.fr       */
+/*   Updated: 2023/03/11 16:24:38 by evallee-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 # include <fcntl.h>
 # include <stdlib.h>
 # include <unistd.h>
-
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 2
 # endif
