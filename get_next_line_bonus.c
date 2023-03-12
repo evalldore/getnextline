@@ -6,7 +6,7 @@
 /*   By: evallee- <evallee-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 17:54:45 by evallee-          #+#    #+#             */
-/*   Updated: 2023/03/11 16:26:04 by evallee-         ###   ########.fr       */
+/*   Updated: 2023/03/11 20:28:15 by evallee-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,12 @@ static int	append_to_line(char	**line, char	*buffer)
 
 char	*get_next_line(int fd)
 {
-	static char	fd_states[MAX_OPEN][BUFFER_SIZE + 1];
+	static char	fd_states[OPEN_MAX][BUFFER_SIZE + 1];
 	char		*line;
 	char		*buffer;
 	ssize_t		bytes_read;
 
-	if (fd < 0 || BUFFER_SIZE <= 0 || fd >= MAX_OPEN)
+	if (fd < 0 || BUFFER_SIZE <= 0 || fd >= OPEN_MAX)
 		return (NULL);
 	buffer = fd_states[fd];
 	line = NULL;
