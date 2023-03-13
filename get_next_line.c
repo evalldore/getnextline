@@ -6,7 +6,7 @@
 /*   By: evallee- <evallee-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 17:54:45 by evallee-          #+#    #+#             */
-/*   Updated: 2023/03/11 16:23:54 by evallee-         ###   ########.fr       */
+/*   Updated: 2023/03/13 17:58:46 by evallee-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static int	append_to_line(char	**line, char	*buffer)
 		buffer_end++;
 	temp = *line;
 	*line = ft_emptyline(line_len + (buffer_end - buffer) + 1);
-	if (!line)
+	if (!(*line))
 		return (0);
 	ft_strlcpy(*line, temp, line_len + 1);
 	ft_strlcat(*line, buffer, line_len + (buffer_end - buffer) + 1);
